@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Rekisteröidy käyttäjäksi</title>
+        <meta charset="UTF-8"/>
+                                <style>
+            body {
+                background: black;
+                color: red;
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
+            }
+            </style>
+    </head>
+    <body>
+        <h3>Luo itsellesi käyttäjätunnus</h3>
+        <form method="POST" action="/luotunnus">
+            Nimi:<br/>
+            <input type="text" name="nimi"/><br/>
+            Käyttäjätunnus:<br/>
+            <input type="text" name="tunnus"/><br/>
+            Salasana:<br/>
+            <input type="password" name="salasana"/><br/>
+            Salasana uudelleen:<br/>
+            <input type="password" name="salasana2"/><br/>
+            <input type="submit" value="Luo tunnus!"/>            
+        </form>
+        <br/>
+        <a href="/">Takaisin etusivulle</a>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Ryhmä Huttusen huikea foorumi</title>
+        <meta charset="UTF-8"/>
+                        <style>
+            body {
+                background: black;
+                color: red;
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
+            }
+            </style>
+    </head>
+    <body>
+        <p th:text="'Olet kirjautunut sisään tunnuksella: '+${kayttaja.tunnus}">Kayttajatunnus</p>
+        <a href="/logout">Kirjaudu ulos</a>
+        <br/><br/>
+<!--    <p>Tää on vielä toi etusivu, mutta ero on että nyt sisäänkirjautunut</p> -->
+        
+        <p>Valitse aihealue alta (vedä hiiri päälle niin tapahtuu eeppisyyttä;)):</p>
+<!--        <ul>
+            <li th:each="alue : ${alueet}">
+                <p><a th:href="@{~/s/users/{kayttajaid}/alueet/{alueid}/(kayttajaid=${kayttaja.id}, alueid=${alue.id})}"><span th:text="${alue.otsikko}" th:title="${alue.kuvaus}">Alueen nimi</span></a> Viestien määrä: <span th:text="${alue.viestienmaara}"> Viestejä yhteensä</span> Viimeisin viesti: <span th:text="${alue.viimeisinviesti}">Viimeisin viesti aika</span></p>
+            </li>
+        </ul>-->
+<table style="width:60%">
+    <tr>
+        <th style="text-align: left">Alue</th>
+        <th style="text-align: left">Viestejä yhteensä</th>
+        <th style="text-align: left">Viimeisin viesti</th>
+    </tr>
+    <tr th:each="alue : ${alueet}">
+        <td><a th:href="@{~/s/users/{kayttajaid}/alueet/{alueid}/(kayttajaid=${kayttaja.id}, alueid=${alue.id})}"><span th:text="${alue.otsikko}" th:title="${alue.kuvaus}">Alueen otsikko</span></a></td>
+        <td th:text="${alue.viestienmaara}">viestien määrä</td>
+        <td th:text="${alue.viimeisinviesti}">viimeisin aika</td>
+    </tr>
+</table>
+        <form method="POST" th:action="@{~/luoalue/{kayttajaid}/(kayttajaid=${kayttaja.id})}">
+            <br/>
+            Aloita uusi alue: <br/>
+            <input type="text" name="alueenNimi"/><br/>
+            Lisää alueelle kuvaus: <br/>
+            <input type="text" name="kuvaus"/><br/>
+            <input type="submit" value="Lisää!"/>            
+        </form>
+    </body>
+</html>

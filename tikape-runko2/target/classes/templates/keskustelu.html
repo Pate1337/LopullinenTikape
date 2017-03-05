@@ -1,0 +1,41 @@
+
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="${keskustelu.otsikko}">TODO supply a title</title>
+        <meta charset="UTF-8"/>
+        <style>
+            td {
+                border-top: solid black 1px;
+                border-bottom: solid red 1px;
+                padding: 1em;
+            }
+            body {
+                background: black;
+                color: red;
+                font-family: "Comic Sans MS", "Comic Sans", cursive;
+            }
+            </style>
+    </head>
+    <body>
+        <a href="/kirjautuminen">Kirjaudu sisään</a> tai luo itsellesi käyttäjätunnus <a href="/rekisteroidy">tästä</a>
+        <br/><br/>
+        <p>Alue: <span th:text="${alue.otsikko}">alueen nimi</span> -> <b><span th:text="${keskustelu.otsikko}">keskustelun nimi</span></b></p>        
+        <table>
+        <th:block th:each="viesti : ${keskustelunViestit}">
+    <tr>
+        <td th:text="${viesti.teksti}">Viesti</td>
+    </tr>
+</th:block>
+        </table>
+        <br/>
+        <p>Vain kirjautuneet käyttäjät voivat lisätä keskusteluja. Luo tunnus tai kirjaudu sisään ylhäältä.</p>
+        <br/>
+        <a th:href="@{~/alueet/{alueid}/(alueid=${alue.id})}">Takaisin keskusteluihin</a>
+    </body>
+</html>
